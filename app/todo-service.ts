@@ -23,11 +23,14 @@ export class TodoService {
   }
 
   toggleTodo(todo:TodoModel) {
-    todo.toggle();
+    const status = todo.status == 'started'
+                  ? 'completed'
+                  : 'started';
+    const toggledTodo = Object.assign({}, todo, { status });
     const i = this.todos.indexOf(todo);
     this.todos = [
       ...this.todos.slice(0, i),
-      todo,
+      toggledTodo,
       ...this.todos.slice(i + 1)
     ]
   }
