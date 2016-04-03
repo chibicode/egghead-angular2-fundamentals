@@ -1,7 +1,6 @@
-import {Component, Input, ViewEncapsulation} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 @Component({
-  encapsulation: ViewEncapsulation.Native,
   selector: 'todo-item-renderer',
   template: `
   <style>
@@ -11,9 +10,10 @@ import {Component, Input, ViewEncapsulation} from 'angular2/core';
   </style>
   <div>
     <span [ngClass]='todo.status'>{{ todo.title }}</span>
-    <button (click)='todo.toggle()'>Toggle</button>
+    <button (click)='toggle.emit(todo)'>Toggle</button>
   </div>`
 })
 export class TodoItemRenderer {
   @Input() todo;
+  @Output() toggle = new EventEmitter();
 }
