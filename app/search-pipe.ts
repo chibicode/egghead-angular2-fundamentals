@@ -6,6 +6,6 @@ import {Pipe} from 'angular2/core';
 export class SearchPipe {
   transform (value, [term]) {
     console.log(value, term);
-    return value.filter((item) => item.title.startsWith(term));
+    return value.filter((item) => item.title.includes(term));
   }
 }
